@@ -1,5 +1,5 @@
 if(process.env.NODE_ENV !== 'production'){
-  require('dotenv').config({path:'.env'})
+  require('dotenv').config({path:require('path').join(__dirname, '.env')})
 }
 const express = require('express')
 const mongoose = require('mongoose')
@@ -20,7 +20,7 @@ app.use(cors())
 app.use('/api/actress', actressRouter)
 
 app.get('/', (req, res) => {
-  res.send('home')
+  res.send(db.collections)
 })
 
 app.listen(process.env.PORT || 8080)
