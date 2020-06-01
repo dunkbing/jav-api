@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
 const actressSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
   imgUrl: {
     type: String,
     required: false
