@@ -6,7 +6,9 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const actressRouter = require('./routes/actress')
 
-mongoose.connect('mongodb+srv://dunkbing:Io4M5NT08xVCESFv@cluster0-i2kla.gcp.mongodb.net/jav-idols?retryWrites=true&w=majority', {useNewUrlParser: true})
+mongoose.connect('mongodb+srv://dunkbing:Io4M5NT08xVCESFv@cluster0-i2kla.gcp.mongodb.net/jav-idols?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
+  if(err) console.log(err.message)
+})
 const db = mongoose.connection
 db.on('error', error => console.error(error.message))
 db.once('open', () => console.log('connected to mongoose'))
