@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
       return {name, url: `https://jav-idols-api.herokuapp.com/api/actress/${name}/${_id}`}
     })
     const results = {}
+    results.count = await Actress.countDocuments({})
     if(offset > 0){
       const prevUrl = `https://jav-idols-api.herokuapp.com/api/actress?offset=${offset-20}&limit=${limit}`
       results.prevUrl = prevUrl
