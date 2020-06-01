@@ -6,9 +6,9 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const actressRouter = require('./routes/actress')
 
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
+mongoose.connect('mongodb+srv://dunkbing:Io4M5NT08xVCESFv@cluster0-i2kla.gcp.mongodb.net/jav-idols?retryWrites=true&w=majority', {useNewUrlParser: true})
 const db = mongoose.connection
-db.on('error', error => console.error(error))
+db.on('error', error => console.error(error.message))
 db.once('open', () => console.log('connected to mongoose'))
 
 const app = express()
