@@ -8,14 +8,14 @@ router.get('/', async (req, res) => {
   try {
     const actresses = [...(await Actress.find().skip(offset).limit(limit))].map(item => {
       const {name, _id} = item
-      return {name, url: `http://localhost:8080/api/actress/${name}/${_id}`}
+      return {name, url: `https://jav-idols-api.herokuapp.com/api/actress/${name}/${_id}`}
     })
     const results = {}
     if(offset > 0){
-      const prevUrl = `http://localhost:8080/api/actress?offset=${offset-20}&limit=${limit}`
+      const prevUrl = `https://jav-idols-api.herokuapp.com//api/actress?offset=${offset-20}&limit=${limit}`
       results.prevUrl = prevUrl
     }
-    const nextUrl = `http://localhost:8080/api/actress?offset=${offset+20}&limit=${limit}`
+    const nextUrl = `https://jav-idols-api.herokuapp.com//api/actress?offset=${offset+20}&limit=${limit}`
     results.nextUrl = nextUrl
     results.results = actresses
     res.json(results)
@@ -29,7 +29,7 @@ router.get('/:name', async(req, res) => {
     const name = req.params.name
     const actresses = (await Actress.find({name}).exec()).map(item => {
       const {_id, name, imgUrl, dateOfBirth, placeOfBirth, debut, yearsActive, measurements, cup, height, starSign, bloodType, films} = item
-      const url = `http://localhost:8080/api/actress/${name}/${_id}`
+      const url = `https://jav-idols-api.herokuapp.com/api/actress/${name}/${_id}`
       return {name, url, imgUrl, dateOfBirth, placeOfBirth, debut, yearsActive, measurements, cup, height, starSign, bloodType, films}
     })
     res.status(200).json(actresses)
