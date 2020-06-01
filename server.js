@@ -19,4 +19,8 @@ app.use(cors())
 
 app.use('/api/actress', actressRouter)
 
+app.get('/', (req, res) => {
+  res.send('home')
+})
+
 app.listen(process.env.PORT || 8080)
