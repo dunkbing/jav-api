@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const actressRouter = require('./routes/actress')
 
-mongoose.connect('mongodb+srv://dunkbing:Io4M5NT08xVCESFv@cluster0-i2kla.gcp.mongodb.net/jav-idols?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
   if(err) console.log(err.message)
 })
 const db = mongoose.connection
@@ -22,7 +22,7 @@ app.use(cors())
 app.use('/api/actress', actressRouter)
 
 app.get('/', (req, res) => {
-  res.send(db.collections)
+  res.send("home")
 })
 
 app.listen(process.env.PORT || 8080)
