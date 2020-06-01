@@ -12,10 +12,10 @@ router.get('/', async (req, res) => {
     })
     const results = {}
     if(offset > 0){
-      const prevUrl = `https://jav-idols-api.herokuapp.com//api/actress?offset=${offset-20}&limit=${limit}`
+      const prevUrl = `https://jav-idols-api.herokuapp.com/api/actress?offset=${offset-20}&limit=${limit}`
       results.prevUrl = prevUrl
     }
-    const nextUrl = `https://jav-idols-api.herokuapp.com//api/actress?offset=${offset+20}&limit=${limit}`
+    const nextUrl = `https://jav-idols-api.herokuapp.com/api/actress?offset=${offset+20}&limit=${limit}`
     results.nextUrl = nextUrl
     results.results = actresses
     res.json(results)
