@@ -51,4 +51,14 @@ router.get('/:name/:_id', async(req, res) => {
   }
 })
 
+router.post('/', async(req, res) => {
+  const { name, url, imgUrl, dateOfBirth, placeOfBirth, debut, yearsActive, measurements, cup, height, starSign, bloodType, films } = req.body;
+  try {
+    await Actress.create({name, url, imgUrl, dateOfBirth, placeOfBirth, debut, yearsActive, measurements, cup, height, starSign, bloodType, films})
+    res.send(201);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router
