@@ -2,9 +2,10 @@ import { config as envConfig} from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import { join as joinPath, dirname } from 'path';
-import { fileURLToPath } from 'url';
 import actressRouter from './routes/actress.route.js';
+import authRoute from './routes/auth.route.js';
+import sercureRoute from './routes/sercure.route.js';
+import passport from 'passport';
 
 // const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -26,9 +27,11 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/api/actress', actressRouter)
+app.use('/user', passport.authenticate('jwt', { session: false }), sercureRoute);
 
 app.get('/', (req, res) => {
   res.send("home")
 })
 
-app.listen(process.env.PORT || 8080)
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.log(`running on port ${PORT}`))
