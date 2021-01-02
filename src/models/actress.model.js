@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 
 const actressSchema = new mongoose.Schema({
   name: {
@@ -51,4 +51,4 @@ const actressSchema = new mongoose.Schema({
   }
 })
 
-exports.Actress = mongoose.model('actress', actressSchema, 'actress')
+export const ActressModel = mongoose.model('actress', actressSchema, 'actress');

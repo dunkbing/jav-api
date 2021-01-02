@@ -1,10 +1,16 @@
+import { config as envConfig} from 'dotenv';
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import { join as joinPath, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import actressRouter from './routes/actress.route.js';
+
+// const __dirname = dirname(fileURLToPath(import.meta.url));
+
 if(process.env.NODE_ENV !== 'production'){
-  require('dotenv').config({path:require('path').join(__dirname, '.env')})
+  envConfig();
 }
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
-const actressRouter = require('./routes/actress')
 
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
   if(err) console.log(err.message)
