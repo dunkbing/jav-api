@@ -1,5 +1,7 @@
-import { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
 import { hash, verify } from 'argon2';
+
+const { Schema, model } = mongoose;
 
 const userSchema = new Schema({
     email: {
@@ -14,7 +16,7 @@ const userSchema = new Schema({
 })
 
 /**
- * @param {Function} next
+ * @param {import('mongoose').HookNextFunction} next
  */
 userSchema.pre('save', async function(next) {
   const user = this;

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
+import '../services/auth.js';
 
 const router = Router();
 
@@ -13,7 +14,7 @@ router.post(
    * @param {import('express').Response} res 
    * @param {import('express').NextFunction} next 
    */
-  async (req, res, next) => {
+  async (req, res) => {
     res.json({
       message: 'sign up successfully',
       user: req.user,
@@ -22,7 +23,7 @@ router.post(
 );
 
 router.post(
-  'login',
+  '/login',
   /**
    * 
    * @param {import('express').Request} req 

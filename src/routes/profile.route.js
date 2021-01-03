@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import router from './auth.route';
+
+const router = Router();
 
 router.get(
   '/profile',

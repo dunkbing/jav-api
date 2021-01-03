@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import actressRouter from './routes/actress.route.js';
 import authRoute from './routes/auth.route.js';
-import sercureRoute from './routes/sercure.route.js';
+import sercureRoute from './routes/profile.route.js';
 import passport from 'passport';
 
 // const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -27,6 +27,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/api/actress', actressRouter)
+app.use('/auth', authRoute);
 app.use('/user', passport.authenticate('jwt', { session: false }), sercureRoute);
 
 app.get('/', (req, res) => {
