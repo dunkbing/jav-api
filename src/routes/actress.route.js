@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     const results = await getAll(offset, limit);
     res.json(results)
   } catch (error) {
-    res.status(500).json({error: error?.message})
+    res.status(500).json({error: error.message})
   }
 })
 
