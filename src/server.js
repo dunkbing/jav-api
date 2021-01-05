@@ -27,8 +27,8 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/api/actress', actressRouter)
-app.use('/auth', authRoute);
-app.use('/user', passport.authenticate('jwt', { session: false }), sercureRoute);
+app.use('/api/auth', authRoute);
+app.use('/api/user', passport.authenticate('jwt', { session: false }), sercureRoute);
 
 app.get('/', (req, res) => {
   res.send("home")
